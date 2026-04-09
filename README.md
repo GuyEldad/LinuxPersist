@@ -72,6 +72,21 @@ ldd --version
 
 ---
 
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `--live` | Live scan of the local Linux system *(Linux only)* |
+| `-d <PATH>` | Offline triage folder |
+| `-s` | Start the scan *(required)* |
+| `--txt` | Save output as plain text (`.txt`) |
+| `--json` | Save output as JSON (`.json`) |
+| `--csv` | Save output as CSV (`.csv`) |
+| `-o <DIR>` | Custom output directory *(default: `~/Desktop/LinuxPersist_Results/`)* |
+| `-h, --help` | Show help message |
+
+---
+
 ## Modes
 
 ### Live Scan - Linux Only
@@ -126,21 +141,6 @@ Windows:
 ```
 .\LinuxPersist.exe -d C:\triage\IR-Case-001 -s --csv -o C:\results
 ```
-
----
-
-## Flags
-
-| Flag | Description |
-|------|-------------|
-| `--live` | Live scan of the local Linux system *(Linux only)* |
-| `-d <PATH>` | Offline triage folder |
-| `-s` | Start the scan *(required)* |
-| `--txt` | Save output as plain text (`.txt`) |
-| `--json` | Save output as JSON (`.json`) |
-| `--csv` | Save output as CSV (`.csv`) |
-| `-o <DIR>` | Custom output directory *(default: `~/Desktop/LinuxPersist_Results/`)* |
-| `-h, --help` | Show help message |
 
 ---
 
