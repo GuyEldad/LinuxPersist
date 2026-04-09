@@ -4,7 +4,7 @@
 
 # LinuxPersist
 
-**LinuxPersist** is a forensic tool for detecting Linux persistence artifacts across live systems and offline triage collections. Built for DFIR and designed to work with any Linux triage output, it supports flexible export formats and includes a live system scan mode for forensic investigation.
+**LinuxPersist** is a forensic tool for detecting Linux persistence artifacts across live systems and offline triage collections. Built for DFIR and designed to work with Linux triage output, it supports flexible export formats and includes a live system scan mode for forensic investigation.
 
 ## Features
 
