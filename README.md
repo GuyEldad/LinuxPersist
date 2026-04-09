@@ -8,12 +8,10 @@
 
 ## Features
 
-- Detects **shell configs**, **systemd services**, **cron jobs**, **SSH keys**, **auth logs**, **rc.local**, **ld.so.preload**, **XDG autostart**, **NetworkManager dispatcher scripts**, **APT hooks**, and more.
+- Detects **shell configs**, **systemd services**, **cron jobs**, **SSH keys**, **auth logs**, **rc.local**, **APT hooks**, and more.
 - Exports results as **TXT**, **JSON**, or **CSV**.
-- **Live scan mode** (`--live`) — scans a live Linux system for persistence artifacts.
-- **Offline triage mode** (`-d`) — scans any Linux triage folder (UAC, CyLR, KAPE, Velociraptor, or any flat filesystem collection).
-- Reads **journald** in both live and offline mode.
-- Smart **username detection** — correctly attributes artifacts to users across UAC, CyLR, and live layouts.
+- **Live scan mode** (`--live`) - scans a live Linux system for persistence artifacts.
+- **Offline triage mode** (`-d`) - scans Linux triage folder for persistence artifacts.
 - Available as a **standalone executable** for Linux and Windows.
 
 ## Download
@@ -76,7 +74,7 @@ ldd --version
 
 ## Modes
 
-### Live Scan — Linux Only
+### Live Scan - Linux Only
 
 Scan the local Linux system for persistence artifacts:
 
@@ -93,7 +91,7 @@ sudo ./LinuxPersist --live -s
 Export findings:
 
 ```bash
-sudo ./LinuxPersist --live -s --txt --json --csv
+sudo ./LinuxPersist --live -s --txt --json --csv -o ~/Desktop
 ```
 
 ---
@@ -109,7 +107,7 @@ Scan any Linux triage folder:
 Export findings:
 
 ```bash
-./LinuxPersist -d /triage/IR-Case-001 -s --txt --json --csv
+./LinuxPersist -d /triage/IR-Case-001 -s --txt --json --csv 
 ```
 
 Save to a custom output folder:
@@ -123,37 +121,6 @@ Windows:
 ```
 .\LinuxPersist.exe -d C:\triage\IR-Case-001 -s --csv -o C:\results
 ```
-
----
-
-## Supported Triage Tools
-
-| Tool | Compatible |
-|------|------------|
-| UAC | Full support |
-| CyLR | Full support |
-| KAPE | Full support |
-| Velociraptor | Full support |
-| Any flat filesystem collection | Full support |
-
----
-
-## Artifacts Scanned
-
-| Category | Artifacts |
-|----------|-----------|
-| Shell Configs | `.bashrc` `.profile` `.bash_profile` `.zshrc` `/etc/bash.bashrc` `/etc/environment` |
-| SSH | `authorized_keys` |
-| Cron | `/etc/cron.*` `/var/spool/cron` `crontab` |
-| At Jobs | `/var/spool/cron/atjobs` `/var/spool/at` |
-| Systemd | `.service` `.timer` (system + user level) |
-| Auth Logs | `auth.log` `secure` `journald` (live + offline) |
-| Boot / Init | `rc.local` `/etc/init.d` `/etc/update-motd.d` |
-| Profile | `/etc/profile.d/*.sh` |
-| Preload | `/etc/ld.so.preload` |
-| Autostart | `~/.config/autostart` `/etc/xdg/autostart` |
-| Network | `/etc/NetworkManager/dispatcher.d` |
-| APT Hooks | `/etc/apt/apt.conf.d` |
 
 ---
 
@@ -177,6 +144,27 @@ Windows:
 - **TXT** — human-readable output matching the terminal display, one finding per artifact block.
 - **JSON** — structured output with tool metadata, scan mode, scan target, and all findings.
 - **CSV** — one row per finding with columns: `User`, `Artifact`, `Path`, `Finding`, `Reason`.
+
+---
+
+## Artifacts Scanned
+
+| Category | Artifacts |
+|----------|-----------|
+| Shell Configs | `.bashrc` `.profile` `.bash_profile` `.zshrc` `/etc/bash.bashrc` `/etc/environment` |
+| SSH | `authorized_keys` |
+| Cron | `/etc/cron.*` `/var/spool/cron` `crontab` |
+| At Jobs | `/var/spool/cron/atjobs` `/var/spool/at` |
+| Systemd | `.service` `.timer` (system + user level) |
+| Auth Logs | `auth.log` `secure` `journald` (live + offline) |
+| Boot / Init | `rc.local` `/etc/init.d` `/etc/update-motd.d` |
+| Profile | `/etc/profile.d/*.sh` |
+| Preload | `/etc/ld.so.preload` |
+| Autostart | `~/.config/autostart` `/etc/xdg/autostart` |
+| Network | `/etc/NetworkManager/dispatcher.d` |
+| APT Hooks | `/etc/apt/apt.conf.d` |
+
+
 
 ---
 
