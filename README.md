@@ -118,7 +118,7 @@ sudo ./LinuxPersist --live -s --csv -o ~/results
 
 ### Offline Triage
 
-> For best results, use with a **UAC** triage collection. UAC preserves the full Linux filesystem structure and provides the most complete artifact coverage.
+> **Note:** For best results, use with a **UAC** triage collection. UAC preserves the full Linux filesystem structure and provides the most complete artifact coverage.
 
 Scan any Linux triage folder:
 
