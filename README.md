@@ -96,7 +96,7 @@ sudo ./LinuxPersist --live -s --txt --json --csv
 Save to a custom output folder:
 
 ```bash
-./LinuxPersist -d /triage/IR-Case-001 -s --csv -o ~/results
+sudo ./LinuxPersist --live -s --csv -o ~/results
 ```
 
 ---
