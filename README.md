@@ -1,0 +1,201 @@
+<p align="center">
+  <img src="LinuxPersist.svg" alt="LinuxPersist Banner" width="950">
+</p>
+
+# LinuxPersist
+
+**LinuxPersist** is a forensic tool for detecting Linux persistence artifacts across live systems and offline triage collections. Built for DFIR and designed to work with any Linux triage output, it supports flexible export formats and includes a live system scan mode for forensic investigation.
+
+## Features
+
+- Detects **shell configs**, **systemd services**, **cron jobs**, **SSH keys**, **auth logs**, **rc.local**, **ld.so.preload**, **XDG autostart**, **NetworkManager dispatcher scripts**, **APT hooks**, and more.
+- Exports results as **TXT**, **JSON**, or **CSV**.
+- **Live scan mode** (`--live`) — scans a live Linux system for persistence artifacts.
+- **Offline triage mode** (`-d`) — scans any Linux triage folder (UAC, CyLR, KAPE, Velociraptor, or any flat filesystem collection).
+- Reads **journald** in both live and offline mode.
+- Smart **username detection** — correctly attributes artifacts to users across UAC, CyLR, and live layouts.
+- Available as a **standalone executable** for Linux and Windows.
+
+## Download
+
+| Platform | Download |
+|----------|----------|
+| Linux    | [LinuxPersist_Linux.7z](./LinuxPersist_Linux.7z) |
+| Windows  | [LinuxPersist_Windows.7z](./LinuxPersist_Windows.7z) |
+
+## Linux Compatibility
+
+The Linux executable was built for **x86_64 glibc-based systems**.
+
+Tested on:
+- REMnux
+- Kali Linux
+
+Expected to work on:
+- Debian/Ubuntu/Kali-based systems with **glibc 2.31 or newer**
+
+Not guaranteed on:
+- Older Linux distributions
+- ARM systems
+
+If the Linux binary does not run, check your glibc version with:
+
+```bash
+ldd --version
+```
+
+## Installation and Usage
+
+### Linux
+
+- Extract the `.7z` archive:
+  ```bash
+  7z x LinuxPersist_Linux.7z
+  ```
+- Grant executable permission:
+  ```bash
+  chmod +x LinuxPersist
+  ```
+- Run:
+  ```bash
+  ./LinuxPersist --help
+  ```
+
+---
+
+### Windows
+
+- Extract the `.7z` archive.
+- Open **Command Prompt** or **PowerShell** in the folder where the executable is located.
+- Run:
+  ```
+  .\LinuxPersist.exe --help
+  ```
+
+---
+
+## Modes
+
+### Live Scan — Linux Only
+
+Scan the local Linux system for persistence artifacts:
+
+```bash
+./LinuxPersist --live -s
+```
+
+For full access to system-level artifacts, run with elevated privileges:
+
+```bash
+sudo ./LinuxPersist --live -s
+```
+
+Export findings:
+
+```bash
+sudo ./LinuxPersist --live -s --txt --json --csv
+```
+
+---
+
+### Offline Triage
+
+Scan any Linux triage folder:
+
+```bash
+./LinuxPersist -d /triage/IR-Case-001 -s
+```
+
+Export findings:
+
+```bash
+./LinuxPersist -d /triage/IR-Case-001 -s --txt --json --csv
+```
+
+Save to a custom output folder:
+
+```bash
+./LinuxPersist -d /triage/IR-Case-001 -s --csv -o ~/results
+```
+
+Windows:
+
+```
+.\LinuxPersist.exe -d C:\triage\IR-Case-001 -s --csv -o C:\results
+```
+
+---
+
+## Supported Triage Tools
+
+| Tool | Compatible |
+|------|------------|
+| UAC | Full support |
+| CyLR | Full support |
+| KAPE | Full support |
+| Velociraptor | Full support |
+| Any flat filesystem collection | Full support |
+
+---
+
+## Artifacts Scanned
+
+| Category | Artifacts |
+|----------|-----------|
+| Shell Configs | `.bashrc` `.profile` `.bash_profile` `.zshrc` `/etc/bash.bashrc` `/etc/environment` |
+| SSH | `authorized_keys` |
+| Cron | `/etc/cron.*` `/var/spool/cron` `crontab` |
+| At Jobs | `/var/spool/cron/atjobs` `/var/spool/at` |
+| Systemd | `.service` `.timer` (system + user level) |
+| Auth Logs | `auth.log` `secure` `journald` (live + offline) |
+| Boot / Init | `rc.local` `/etc/init.d` `/etc/update-motd.d` |
+| Profile | `/etc/profile.d/*.sh` |
+| Preload | `/etc/ld.so.preload` |
+| Autostart | `~/.config/autostart` `/etc/xdg/autostart` |
+| Network | `/etc/NetworkManager/dispatcher.d` |
+| APT Hooks | `/etc/apt/apt.conf.d` |
+
+---
+
+## Flags
+
+| Flag | Description |
+|------|-------------|
+| `--live` | Live scan of the local Linux system *(Linux only)* |
+| `-d <PATH>` | Offline triage folder |
+| `-s` | Start the scan *(required)* |
+| `--txt` | Save output as plain text (`.txt`) |
+| `--json` | Save output as JSON (`.json`) |
+| `--csv` | Save output as CSV (`.csv`) |
+| `-o <DIR>` | Custom output directory *(default: `~/Desktop/LinuxPersist_Results/`)* |
+| `-h, --help` | Show help message |
+
+---
+
+## Output
+
+- **TXT** — human-readable output matching the terminal display, one finding per artifact block.
+- **JSON** — structured output with tool metadata, scan mode, scan target, and all findings.
+- **CSV** — one row per finding with columns: `User`, `Artifact`, `Path`, `Finding`, `Reason`.
+
+---
+
+## Important Notice
+
+Some antivirus software may flag the executable as a false positive. This is due to the way the tool is packaged using **Python** and **PyInstaller**, which can sometimes trigger heuristic detections.
+
+If you encounter warnings, consider:
+
+- Running the tool in a sandbox or isolated environment.
+- Adding an exclusion rule for the executable in your antivirus software.
+- Temporarily disabling your antivirus software.
+
+---
+
+## Contact
+
+For questions or feedback, contact me via https://www.linkedin.com/in/guy-eldad/
+
+---
+
+*Copyright © 2026 Guy Eldad. All rights reserved.*
