@@ -4,14 +4,14 @@
 
 # LinuxPersist
 
-**LinuxPersist** is a forensic tool for detecting Linux persistence artifacts across live systems and offline triage collections. Built for DFIR and designed to work with Linux triage output, it supports flexible export formats and includes a live system scan mode for forensic investigation.
+**LinuxPersist** is a forensic tool for detecting Linux persistence artifacts across live systems and offline triage collections. Built for DFIR and designed to work with any Linux triage output, it supports flexible export formats and includes a live system scan mode for forensic investigation.
 
 ## Features
 
 - Detects **shell configs**, **systemd services**, **cron jobs**, **SSH keys**, **auth logs**, **rc.local**, **APT hooks**, and more.
 - Exports results as **TXT**, **JSON**, or **CSV**.
 - **Live scan mode** (`--live`) - scans a live Linux system for persistence artifacts.
-- **Offline triage mode** (`-d`) - scans Linux triage folder for persistence artifacts.
+- **Offline triage mode** (`-d`) - scans any Linux triage folder for persistence artifacts.
 - Available as a **standalone executable** for Linux and Windows.
 
 ## Download
