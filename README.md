@@ -146,9 +146,9 @@ Windows:
 
 ## Output
 
-- **TXT** — human-readable output matching the terminal display, one finding per artifact block.
-- **JSON** — structured output with tool metadata, scan mode, scan target, and all findings.
-- **CSV** — one row per finding with columns: `User`, `Artifact`, `Path`, `Finding`, `Reason`.
+- **TXT** - human-readable output matching the terminal display, one finding per artifact block.
+- **JSON** - structured output with tool metadata, scan mode, scan target, and all findings.
+- **CSV** - one row per finding with columns: `User`, `Artifact`, `Path`, `Finding`, `Reason`.
 
 ---
 
