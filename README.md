@@ -171,8 +171,6 @@ Windows:
 | Network | `/etc/NetworkManager/dispatcher.d` |
 | APT Hooks | `/etc/apt/apt.conf.d` |
 
-
-
 ---
 
 ## Important Notice
