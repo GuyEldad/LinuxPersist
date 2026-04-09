@@ -121,25 +121,25 @@ sudo ./LinuxPersist --live -s --csv -o ~/results
 Scan any Linux triage folder:
 
 ```bash
-./LinuxPersist -d /triage/IR-Case-001 -s
+./LinuxPersist -d /triage/IR-Case -s
 ```
 
 Export findings:
 
 ```bash
-./LinuxPersist -d /triage/IR-Case-001 -s --txt --json --csv 
+./LinuxPersist -d /triage/IR-Case -s --txt --json --csv 
 ```
 
 Save to a custom output folder:
 
 ```bash
-./LinuxPersist -d /triage/IR-Case-001 -s --csv -o ~/results
+./LinuxPersist -d /triage/IR-Case -s --csv -o ~/results
 ```
 
 Windows:
 
 ```
-.\LinuxPersist.exe -d C:\triage\IR-Case-001 -s --csv -o C:\results
+.\LinuxPersist.exe -d C:\triage\IR-Case -s --csv -o C:\results
 ```
 
 ---
